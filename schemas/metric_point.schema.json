@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "metric_point.schema.json",
+  "title": "MetricPoint",
+  "type": "object",
+  "required": ["ts", "site_id", "rack_id", "device_id", "metric", "value", "unit"],
+  "properties": {
+    "ts": { "type": "string", "format": "date-time" },
+    "site_id": { "type": "string", "minLength": 1 },
+    "rack_id": { "type": "string", "minLength": 1 },
+    "device_id": { "type": "string", "minLength": 1 },
+    "metric": { "type": "string", "minLength": 1 },
+    "value": { "type": "number" },
+    "unit": { "type": "string", "minLength": 1 },
+    "tags": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "default": {}
+    }
+  },
+  "additionalProperties": false
+}

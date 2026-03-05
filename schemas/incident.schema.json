@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "incident.schema.json",
+  "title": "Incident",
+  "type": "object",
+  "required": ["id", "ts", "severity", "source", "message", "status"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "ts": { "type": "string", "format": "date-time" },
+    "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "source": { "type": "string", "minLength": 1 },
+    "message": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["open", "acknowledged", "resolved"] },
+    "site_id": { "type": "string" },
+    "rack_id": { "type": "string" },
+    "details": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  },
+  "additionalProperties": false
+}

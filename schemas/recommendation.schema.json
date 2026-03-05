@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "recommendation.schema.json",
+  "title": "Recommendation",
+  "type": "object",
+  "required": ["id", "ts", "type", "target", "action", "confidence", "risk", "requires_approval"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "ts": { "type": "string", "format": "date-time" },
+    "type": { "type": "string", "minLength": 1 },
+    "target": {
+      "type": "object",
+      "additionalProperties": { "type": ["string", "number", "boolean"] }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": { "type": ["string", "number", "boolean"] }
+    },
+    "expected_impact": {
+      "type": "object",
+      "additionalProperties": { "type": "number" },
+      "default": {}
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "risk": { "type": "string", "enum": ["low", "medium", "high"] },
+    "requires_approval": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
